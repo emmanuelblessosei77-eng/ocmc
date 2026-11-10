@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap');
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #202b3a;
+  background: #fff;
+  font-synthesis: weight;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #9a741f;
+  outline-offset: 3px;
+}
+
+::selection {
+  color: #0a1931;
+  background: #ead8aa;
+}
+
+.container-width {
+  width: min(100% - 3rem, 1280px);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  @apply inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-gold;
+}
+
+.section-title {
+  @apply font-display text-4xl font-bold leading-tight text-navy sm:text-5xl;
+}
+
+.page-hero {
+  background:
+    radial-gradient(ellipse at 82% 15%, rgba(201, 164, 88, 0.18), transparent 34%),
+    linear-gradient(135deg, #0a1931 0%, #112d4f 100%);
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 60;
+  top: 0.75rem;
+  left: 0.75rem;
+  transform: translateY(-180%);
+  background: #c9a458;
+  color: #0a1931;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.home-hero {
+  background:
+    radial-gradient(ellipse at 12% 2%, rgba(212, 175, 90, 0.17), transparent 34%),
+    #f8f6f0;
+}
+
+.home-hero-pattern {
+  background-image:
+    radial-gradient(ellipse at 90% 8%, rgba(212, 175, 90, 0.12), transparent 36%),
+    repeating-linear-gradient(132deg, transparent 0 58px, rgba(255, 255, 255, 0.035) 59px 60px);
+}
+
+.home-hero-slide {
+  opacity: 0;
+  transform: scale(1.035);
+  transition: opacity 700ms ease, transform 7s ease;
+}
+
+.home-hero-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.home-hero-image-shade {
+  background: linear-gradient(0deg, rgba(10, 25, 49, 0.72) 0%, rgba(10, 25, 49, 0.24) 35%, transparent 76%);
+}
+
+.page-hero-image {
+  mask-image: linear-gradient(to right, transparent 0%, #000 30%);
+  animation: page-image-arrive 900ms ease-out both;
+}
+
+.page-hero .eyebrow,
+.page-hero h1,
+.page-hero p:not(.eyebrow) {
+  animation: page-content-arrive 650ms ease-out both;
+}
+
+.page-hero h1 {
+  animation-delay: 100ms;
+}
+
+.page-hero p:not(.eyebrow) {
+  animation-delay: 200ms;
+}
+
+.interactive-card {
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+}
+
+.interactive-card:hover,
+.interactive-card:focus-within {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(10, 25, 49, 0.12);
+}
+
+.interactive-card img {
+  transition: transform 500ms ease;
+}
+
+.interactive-card:hover img {
+  transform: scale(1.04);
+}
+
+@keyframes page-content-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-image-arrive {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.campus-showcase .campus-story-image {
+  height: 270px;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .home-hero-slide {
+    transform: none;
+  }
+
+  .page-hero .eyebrow,
+  .page-hero h1,
+  .page-hero p:not(.eyebrow),
+  .page-hero-image {
+    animation: none;
+  }
+
+  .interactive-card,
+  .interactive-card img {
+    transition: none;
+  }
+
+  .interactive-card:hover,
+  .interactive-card:focus-within,
+  .interactive-card:hover img {
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .container-width {
+    width: min(100% - 2rem, 1200px);
+  }
+
+  .home-hero .container-width {
+    width: 100%;
+  }
+}
+
+.site-header-inner {
+  width: min(100% - 3rem, 1600px);
+}
+
+@media (max-width: 640px) {
+  .site-header-inner {
+    width: min(100% - 1rem, 1600px);
+  }
+}
