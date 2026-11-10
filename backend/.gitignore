@@ -13,3 +13,12 @@ build/
 .env
 .env.local
 .DS_Store
+backend/storage/framework/testing/
+*.phpunit.result.cache
+*.tsbuildinfo
+/storage/framework/testing/
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
+/bootstrap/cache/*
